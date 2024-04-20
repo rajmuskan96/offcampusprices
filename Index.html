@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Attributes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #113CCF; /* Blue background */
+            color: #fff; /* White font color */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-weight: bold;
+            margin-top: 40px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        img {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="logo" src="/Users/muskanraj/Downloads/images-2.png" alt="Disney Logo" onerror="this.style.display='none';">
+        <h1>Setting Price for off-campus housing rooms</h1>
+        <select id="roomType">
+            <option value="1bed1bath">1 Bed/1 Bath</option>
+            <option value="2bed2bath">2 Bed/2 Bath</option>
+            <option value="2bed1bath">2 Bed/1 Bath</option>
+            <option value="4bed4bath">4 Bed/4 Bath</option>
+            <option value="4bed2bath">4 Bed/2 Bath</option>
+        </select>
+        <select id="proximity">
+            <option value="Under 5 minutes">Under 5 minutes</option>
+            <option value="10-15 minutes">10-15 minutes</option>
+            <option value="15-20 minutes">15-20 minutes</option>
+            <option value="> 20 minutes">> 20 minutes</option>
+        </select>
+        <select id="preFurnished">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <select id="amenities">
+            <option value="Parking">Parking</option>
+            <option value="Pet-Friendly">Pet-Friendly</option>
+            <option value="Sustainable Maintenance">Sustainable Maintenance</option>
+            <option value="Pool">Pool</option>
+        </select>
+        <button onclick="calculateAttribute()">Calculate Price Range</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateAttribute() {
+            const roomType = document.getElementById('roomType').value;
+            const proximity = document.getElementById('proximity').value;
+            const preFurnished = document.getElementById('preFurnished').value;
+            const amenities = document.getElementById('amenities').value;
+
+            let priceRange = '';
+
+            switch (`${roomType}-${proximity}-${preFurnished}-${amenities}`) {
+    // 1 Bed/1 Bath - 10-15 minutes proximity
+    case '1bed1bath-10-15 minutes-Yes-Parking':
+        priceRange = '$1000 - $1200';
+        break;
+    case '1bed1bath-10-15 minutes-Yes-Pet-Friendly':
+        priceRange = '$1100 - $1300';
+        break;
+    case '1bed1bath-10-15 minutes-No-Parking':
+        priceRange = '$900 - $1100';
+        break;
+    case '1bed1bath-10-15 minutes-No-Pet-Friendly':
+        priceRange = '$1000 - $1200';
+        break;
+
+    // 1 Bed/1 Bath - 15-20 minutes proximity
+    case '1bed1bath-15-20 minutes-Yes-Parking':
+        priceRange = '$1050 - $1250';
+        break;
+    case '1bed1bath-15-20 minutes-Yes-Pet-Friendly':
+        priceRange = '$1150 - $1350';
+        break;
+    case '1bed1bath-15-20 minutes-No-Parking':
+        priceRange = '$950 - $1150';
+        break;
+    case '1bed1bath-15-20 minutes-No-Pet-Friendly':
+        priceRange = '$1050 - $1250';
+        break;
+
+    // 1 Bed/1 Bath - Under 5 minutes proximity
+    case '1bed1bath-Under 5 minutes-Yes-Parking':
+        priceRange = '$1100 - $1300';
+        break;
+    case '1bed1bath-Under 5 minutes-Yes-Pet-Friendly':
+        priceRange = '$1200 - $1400';
+        break;
+    case '1bed1bath-Under 5 minutes-No-Parking':
+        priceRange = '$1000 - $1200';
+        break;
+    case '1bed1bath-Under 5 minutes-No-Pet-Friendly':
+        priceRange = '$1100 - $1300';
+        break;
+
+    // 1 Bed/1 Bath - Greater than 20 minutes proximity
+    case '1bed1bath-> 20 minutes-Yes-Parking':
+        priceRange = '$1200 - $1400';
+        break;
+    case '1bed1bath-> 20 minutes-Yes-Pet-Friendly':
+        priceRange = '$1300 - $1500';
+        break;
+    case '1bed1bath-> 20 minutes-No-Parking':
+        priceRange = '$1100 - $1300';
+        break;
+    case '1bed1bath-> 20 minutes-No-Pet-Friendly':
+        priceRange = '$1200 - $1400';
+        break;
+
+    // Add more cases for other proximity options...
+
+    case '2bed2bath-10-15 minutes-Yes-Parking':
+        priceRange = '$1000 - $1200';
+        break;
+    case '2bed2bath-10-15 minutes-Yes-Pet-Friendly':
+        priceRange = '$1100 - $1300';
+        break;
+    case '2bed2bath-10-15 minutes-No-Parking':
+        priceRange = '$900 - $1100';
+        break;
+    case '2bed2bath-10-15 minutes-No-Pet-Friendly':
+        priceRange = '$1000 - $1200';
+        break;
+
+    // 2 Bed/2 Bath - 15-20 minutes proximity
+    case '2bed2bath-15-20 minutes-Yes-Parking':
+        priceRange = '$1050 - $1250';
+        break;
+    case '2bed2bath-15-20 minutes-Yes-Pet-Friendly':
+        priceRange = '$1150 - $1350';
+        break;
+    case '2bed2bath-15-20 minutes-No-Parking':
+        priceRange = '$950 - $1150';
+        break;
+    case '2bed2bath-15-20 minutes-No-Pet-Friendly':
+        priceRange = '$1050 - $1250';
+        break;
+
+    // 2 Bed/2 Bath - Under 5 minutes proximity
+    case '2bed2bath-Under 5 minutes-Yes-Parking':
+        priceRange = '$1100 - $1300';
+        break;
+    case '2bed2bath-Under 5 minutes-Yes-Pet-Friendly':
+        priceRange = '$1200 - $1400';
+        break;
+    case '2bed2bath-Under 5 minutes-No-Parking':
+        priceRange = '$1000 - $1200';
+        break;
+    case '2bed2bath-Under 5 minutes-No-Pet-Friendly':
+        priceRange = '$1100 - $1300';
+        break;
+
+    // 2 Bed/2 Bath - Greater than 20 minutes proximity
+    case '2bed2bath-> 20 minutes-Yes-Parking':
+        priceRange = '$1200 - $1400';
+        break;
+    case '2bed2bath-> 20 minutes-Yes-Pet-Friendly':
+        priceRange = '$1300 - $1500';
+        break;
+    case '2bed2bath-> 20 minutes-No-Parking':
+        priceRange = '$1100 - $1300';
+        break;
+    case '2bed2bath-> 20 minutes-No-Pet-Friendly':
+        priceRange = '$1200 - $1400';
+        break;
+
+    case '4bed4bath-10-15 minutes-Yes-Parking':
+        priceRange = '$900 - $1100';
+        break;
+    case '4bed4bath-10-15 minutes-Yes-Pet-Friendly':
+        priceRange = '$1000 - $1200';
+        break;
+    case '4bed4bath-10-15 minutes-No-Parking':
+        priceRange = '$800 - $1000';
+        break;
+    case '4bed4bath-10-15 minutes-No-Pet-Friendly':
+        priceRange = '$900 - $1100';
+        break;
+
+    // 4 Bed/4 Bath - 15-20 minutes proximity
+    case '4bed4bath-15-20 minutes-Yes-Parking':
+        priceRange = '$950 - $1150';
+        break;
+    case '4bed4bath-15-20 minutes-Yes-Pet-Friendly':
+        priceRange = '$1050 - $1250';
+        break;
+    case '4bed4bath-15-20 minutes-No-Parking':
+        priceRange = '$850 - $1050';
+        break;
+    case '4bed4bath-15-20 minutes-No-Pet-Friendly':
+        priceRange = '$950 - $1150';
+        break;
+
+    // 4 Bed/4 Bath - Under 5 minutes proximity
+    case '4bed4bath-Under 5 minutes-Yes-Parking':
+        priceRange = '$1000 - $1200';
+        break;
+    case '4bed4bath-Under 5 minutes-Yes-Pet-Friendly':
+        priceRange = '$1100 - $1300';
+        break;
+    case '4bed4bath-Under 5 minutes-No-Parking':
+        priceRange = '$900 - $1100';
+        break;
+    case '4bed4bath-Under 5 minutes-No-Pet-Friendly':
+        priceRange = '$1000 - $1200';
+        break;
+
+    // 4 Bed/4 Bath - Greater than 20 minutes proximity
+    case '4bed4bath-> 20 minutes-Yes-Parking':
+        priceRange = '$1100 - $1300';
+        break;
+    case '4bed4bath-> 20 minutes-Yes-Pet-Friendly':
+        priceRange = '$1200 - $1400';
+        break;
+    case '4bed4bath-> 20 minutes-No-Parking':
+        priceRange = '$1000 - $1200';
+        break;
+    case '4bed4bath-> 20 minutes-No-Pet-Friendly':
+        priceRange = '$1100 - $1300';
+        break;
+        case '4bed2bath-10-15 minutes-Yes-Parking':
+        priceRange = '$700 - $900';
+        break;
+    case '4bed2bath-10-15 minutes-Yes-Pet-Friendly':
+        priceRange = '$800 - $1000';
+        break;
+    case '4bed2bath-10-15 minutes-No-Parking':
+        priceRange = '$600 - $800';
+        break;
+    case '4bed2bath-10-15 minutes-No-Pet-Friendly':
+        priceRange = '$700 - $900';
+        break;
+
+    // 4 Bed/2 Bath - 15-20 minutes proximity
+    case '4bed2bath-15-20 minutes-Yes-Parking':
+        priceRange = '$750 - $950';
+        break;
+    case '4bed2bath-15-20 minutes-Yes-Pet-Friendly':
+        priceRange = '$850 - $1050';
+        break;
+    case '4bed2bath-15-20 minutes-No-Parking':
+        priceRange = '$650 - $850';
+        break;
+    case '4bed2bath-15-20 minutes-No-Pet-Friendly':
+        priceRange = '$750 - $950';
+        break;
+
+    // 4 Bed/2 Bath - Under 5 minutes proximity
+    case '4bed2bath-Under 5 minutes-Yes-Parking':
+        priceRange = '$800 - $1000';
+        break;
+    case '4bed2bath-Under 5 minutes-Yes-Pet-Friendly':
+        priceRange = '$900 - $1100';
+        break;
+    case '4bed2bath-Under 5 minutes-No-Parking':
+        priceRange = '$700 - $900';
+        break;
+    case '4bed2bath-Under 5 minutes-No-Pet-Friendly':
+        priceRange = '$800 - $1000';
+        break;
+
+    // 4 Bed/2 Bath - Greater than 20 minutes proximity
+    case '4bed2bath-> 20 minutes-Yes-Parking':
+        priceRange = '$900 - $1100';
+        break;
+    case '4bed2bath-> 20 minutes-Yes-Pet-Friendly':
+        priceRange = '$1000 - $1200';
+        break;
+    case '4bed2bath-> 20 minutes-No-Parking':
+        priceRange = '$800 - $1000';
+        break;
+    case '4bed2bath-> 20 minutes-No-Pet-Friendly':
+        priceRange = '$900 - $1100';
+        break;
+
+
+    default:
+        priceRange = 'Price range not available';
+}
+
+
+const resultDiv = document.getElementById('result');
+resultDiv.innerHTML = `<p>Price Range: ${priceRange}</p>`;
+}
+</script>
+</body>
+</html>
